@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 
 
-export default function Index(){
+export default function signup(){
     return(
         <View style={styles.container}>
                 <Text>Bem-Vindo à tela de signup</Text>

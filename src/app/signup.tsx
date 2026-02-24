@@ -1,11 +1,24 @@
 import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
 import { Link } from "expo-router";
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+    Image,
+    KeyboardAvoidingView, Platform,
+    ScrollView, StyleSheet, Text, View
+} from "react-native";
+
 
 export default function signup(){
     return(
-       <ScrollView>
+        <KeyboardAvoidingView 
+            style = {{flex:1}}
+            behavior={Platform.select({ios:"padding", android:"height"})}
+            >
+
+       <ScrollView
+       contentContainerStyle={{ flexGrow:1 }}
+       showsVerticalScrollIndicator={false}>
+        
             <View style={styles.container}>
                 <Image 
                     source={require('@/assets/image1.png')}
@@ -14,10 +27,12 @@ export default function signup(){
                 <Text>
                     Cadastrar
                 </Text>
+             <View >  
                 <Input placeholder="Nome Completo" />
                 <Input placeholder="E-mail" keyboardType="email-address" />
                 <Input placeholder="Senha" secureTextEntry/>
                 <Input placeholder="Confirmar Senha" secureTextEntry/>
+                </View> 
                 <Button
                     label="Registrar"
                     disabled={false}
@@ -30,6 +45,7 @@ export default function signup(){
                 </Text>
             </View>
         </ScrollView>
+        </KeyboardAvoidingView>
     )
 } 
 

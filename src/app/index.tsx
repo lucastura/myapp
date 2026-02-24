@@ -2,15 +2,15 @@ import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
 
 import { Link } from "expo-router";
+import { useState } from "react";
 import {
     Alert,
     Image,
     KeyboardAvoidingView, Platform,
     ScrollView, StyleSheet, Text, View
 } from "react-native";
-
 export default function Index(){
-    let email = ""
+    const [email, setEmail] = useState("");
 
     function handleSignIn(){
         Alert.alert("Entrar", "Preencha o E-mail para entrar")

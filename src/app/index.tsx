@@ -1,20 +1,26 @@
+import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
+
 import { Link } from "expo-router";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function Index(){
     return(
-       <ScrollView>
+        <ScrollView contentContainerStyle={{ flexGrow:1 }}>
             <View style={styles.container}>
                 <Image 
                     source={require('@/assets/image1.png')}
                     style={styles.ilustration} 
                 />
-                <Input placeholder="E-mail" keyboardType="email-address" />
-                <Input placeholder="Senha" secureTextEntry/>
-                <Text>Não tem uma conta?
+                <View style={styles.form}>
+                    <Input placeholder="E-mail" keyboardType="email-address" />
+                    <Input placeholder="Senha" secureTextEntry/>
+                    <Button label="Entrar" />
+                    {/* <Button label="Entrar" style={{ backgroundColor: "green"}}/> */}
+                </View>
+                <Text style={styles.footerText}>Não tem uma conta? 
                     <Link href="/signup" style={styles.footerLink}>
-                    {" "}Cadastre-se aqui
+                        {" "}Cadastre-se aqui
                     </Link>
                 </Text>
             </View>
@@ -42,7 +48,9 @@ const styles = StyleSheet.create({
     footerLink:{
         color:"#0929b8",
         fontWeight:700
-
     },
-
+    form: {
+        marginTop:24,
+        gap:12
+    }
 })

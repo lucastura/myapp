@@ -1,5 +1,6 @@
 import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
+import { useState } from "react";
 
 import { Link } from "expo-router";
 import {
@@ -10,6 +11,11 @@ import {
 } from "react-native";
 
 export default function Signup(){
+        const [email, setEmail] = useState("");
+        const [nome, setNome]= useState("");
+        const [senha, setSenha] = useState("");
+        const [conSenha, setconSenha] = useState("");
+
     return(
         <KeyboardAvoidingView 
                     style={{flex:1}}
@@ -18,6 +24,7 @@ export default function Signup(){
         <ScrollView 
             contentContainerStyle={{ flexGrow:1 }}
             showsVerticalScrollIndicator={false}
+            keyboardShouldPersistTaps="handled"
         >
             <View style={styles.container}>
                 <Image 
@@ -27,10 +34,18 @@ export default function Signup(){
                 <Text style={styles.title}>Cadastrar</Text>
                 <Text style={styles.subtitle}>Crie sua conta para acessar</Text>
                 <View style={styles.form}>
-                    <Input placeholder="Nome"  />
-                    <Input placeholder="E-mail" keyboardType="email-address" />
-                    <Input placeholder="Senha" secureTextEntry/>
-                    <Input placeholder="Confirmar Senha" secureTextEntry/>
+                    <Input placeholder="Nome"
+                            onChangeText={setNome} />
+
+                    <Input placeholder="E-mail" keyboardType="email-address" 
+                           onChangeText={setEmail}/>
+                    
+                    <Input placeholder="Senha" secureTextEntry
+                            onChangeText={setSenha}/>
+                    
+                    <Input placeholder="Confirmar Senha" secureTextEntry
+                            onChangeText={setconSenha}/>
+                    
                     <Button label="Cadastrar" />
                     {/* <Button label="Entrar" style={{ backgroundColor: "green"}}/> */}
                 </View>

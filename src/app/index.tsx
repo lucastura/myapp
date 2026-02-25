@@ -13,6 +13,7 @@ import {
 
 export default function Index(){
     const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
 
     function handleSignIn(){
         console.log(email)
@@ -42,7 +43,8 @@ export default function Index(){
                         // onChangeText={(text) => console.log(text)}
                         onChangeText={setEmail}
                     />
-                    <Input placeholder="Senha" secureTextEntry/>
+                    <Input placeholder="Senha" secureTextEntry
+                            onChangeText={setSenha}/>
                     <Button label="Entrar" onPress={handleSignIn} />
                     {/* <Button label="Entrar" style={{ backgroundColor: "green"}}/> */}
                 </View>

@@ -6,33 +6,42 @@ import { useState } from "react";
 import {
     Alert,
     Image,
-    KeyboardAvoidingView, Platform,
+    KeyboardAvoidingView,
+    Platform,
     ScrollView, StyleSheet, Text, View
 } from "react-native";
+
 export default function Index(){
     const [email, setEmail] = useState("");
 
     function handleSignIn(){
-        Alert.alert("Entrar", "Preencha o E-mail para entrar")
-        console.log (email)
+        console.log(email)
+        Alert.alert("Entrar", "Preencha e-mail e senha para entrar!")
     }
+
     return(
-            <KeyboardAvoidingView
-            style = {{flex:1}}
+        <KeyboardAvoidingView 
+            style={{flex:1}}
             behavior={Platform.select({ios:"padding", android:"height"})}
-            >
+        >
 
-        <ScrollView contentContainerStyle={{ flexGrow:1 }}
-                    showsVerticalScrollIndicator={false}>
-
+        <ScrollView 
+            contentContainerStyle={{ flexGrow:1 }}
+            showsVerticalScrollIndicator={false}
+        >
             <View style={styles.container}>
                 <Image 
                     source={require('@/assets/image1.png')}
                     style={styles.ilustration} 
                 />
+                <Text style={styles.title}>Entrar {email}</Text>
+                <Text style={styles.subtitle}>Acesse sua conta com e-mail e senha</Text>
                 <View style={styles.form}>
-                    <Input placeholder="E-mail"
-                    onChangeText={(text) => (email = text)} keyboardType="email-address" />
+                    <Input placeholder="E-mail" 
+                        keyboardType="email-address" 
+                        // onChangeText={(text) => console.log(text)}
+                        onChangeText={setEmail}
+                    />
                     <Input placeholder="Senha" secureTextEntry/>
                     <Button label="Entrar" onPress={handleSignIn} />
                     {/* <Button label="Entrar" style={{ backgroundColor: "green"}}/> */}
@@ -72,5 +81,12 @@ const styles = StyleSheet.create({
     form: {
         marginTop:24,
         gap:12
-    }
+    },
+    title:{ 
+        fontSize: 32,
+        fontWeight:900,
+    },
+    subtitle:{
+        fontSize:16,
+    },    
 })

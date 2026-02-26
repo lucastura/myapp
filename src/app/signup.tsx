@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { Link } from "expo-router";
 import {
+    Alert,
     Image,
     KeyboardAvoidingView,
     Platform,
@@ -15,8 +16,17 @@ export default function Signup(){
         const [nome, setNome]= useState("");
         const [senha, setSenha] = useState("");
         const [conSenha, setconSenha] = useState("");
+            
+        function handleSignUp(){
+            if (senha === conSenha) {
+                Alert.alert("Senha confirmada!")
+            } else {
+                Alert.alert("Atenção!", "Senha não confere")
+            }
+        }
 
-    return(
+
+        return(
         <KeyboardAvoidingView 
                     style={{flex:1}}
                     behavior={Platform.select({ios:"padding", android:"height"})}
@@ -46,7 +56,9 @@ export default function Signup(){
                     <Input placeholder="Confirmar Senha" secureTextEntry
                             onChangeText={setconSenha}/>
                     
-                    <Button label="Cadastrar" />
+                    <Button label="Cadastrar"
+                        onPress={handleSignUp}
+                         />
                     {/* <Button label="Entrar" style={{ backgroundColor: "green"}}/> */}
                 </View>
                 <Text style={styles.footerText}>Já tem uma conta? 
